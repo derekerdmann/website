@@ -10,6 +10,7 @@
     "jade": "*",
     "metalsmith": "~0.5.0",
     "metalsmith-sass": "~0.1.1",
-    "metalsmith-ignore": "~0.1.2"
+    "metalsmith-ignore": "~0.1.2",
+    "metalsmith-watch": "derekerdmann/metalsmith-watch"
   }
 }
