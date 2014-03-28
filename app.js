@@ -7,7 +7,10 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var fs = require("fs");
+
 var Metalsmith = require("metalsmith");
+var sass = require("metalsmith-sass");
+var ignore = require("metalsmith-ignore");
 
 var app = express();
 
@@ -28,6 +31,8 @@ if ('development' == app.get('env')) {
 
 // Generate metalsmith content
 var ms = Metalsmith(__dirname)
+    .use(ignore( ".*" ))  // ignore temp files
+    .use(sass({ outputStyle: "expanded" }))
     .build(function(err){
         if (err) throw err;
     });
