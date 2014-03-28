@@ -7,6 +7,7 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var fs = require("fs");
+var Metalsmith = require("metalsmith");
 
 var app = express();
 
@@ -25,7 +26,11 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-// TODO Generate metalsmith content
+// Generate metalsmith content
+var ms = Metalsmith(__dirname)
+    .build(function(err){
+        if (err) throw err;
+    });
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
