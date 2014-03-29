@@ -1,3 +1,113 @@
+$tablet-min-size: 800px;
+
+header, aside, main { 
+    display: block;
+}
+
 body {
-    color: #f00;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 960px;
+    width: 100%;
+
+    font-family: "Arial";
+    line-height: 1.5em;
+}
+
+main {
+    width: 66%;
+    float: left;
+
+    // Tablet/small window
+    @media screen and ( max-width: $tablet-min-size )    {
+        width: 100%;
+        float: none;
+    }
+}
+
+aside {
+    width: 33%;
+    float: right;
+
+    // Tablet/small window
+    @media screen and ( max-width: $tablet-min-size )    {
+        width: 100%;
+        float: none;
+    }
+}
+
+header {
+    margin-top: 2em;
+}
+
+
+// Text styling
+h1 {
+    font-size: 2em;
+    margin: 1em 0;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+.introduction {
+    margin-bottom: 2em;
+    font-style: italic;
+}
+
+
+// Links
+.external_links {
+
+    padding-left: 1em;
+
+    li {
+        margin-bottom: 1.5em;
+    }
+
+    a {
+        font-size: 1.3em;
+        text-decoration: none;
+        color: #333;
+
+        @extend [class^="icon-"];
+        font-family: "FontAwesome", "Arial";
+
+        &::before {
+            color: #aaa;
+            padding-right: 0.325em;
+            font-size: 1.25em;
+        }
+    }
+}
+
+@mixin link-hover( $color ) {
+
+    $transition-length: 0.25s;
+
+    &::before {
+        transition: $transition-length / 2;
+    }
+    
+    &:hover::before {
+        color: $color;
+        transition: $transition-length;
+    }
+}
+
+.email {
+    @include link-hover( lighten( #082109, 5% ) );
+}
+
+.twitter {
+    @include link-hover( #00aced );
+}
+
+.github {
+    @include link-hover( #333333 );
+}
+
+.stackoverflow {
+    @include link-hover( #818185 );
 }
