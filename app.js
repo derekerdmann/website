@@ -7,6 +7,8 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var fs = require("fs");
+var logger = require("morgan");
+var errorhandler = require("errorhandler");
 
 var Metalsmith = require("metalsmith");
 var sass = require("metalsmith-sass");
@@ -17,17 +19,12 @@ var app = express();
 
 // all environments
 app.set('port', process.env.PORT || 3000);
-app.use(express.favicon());
-app.use(express.logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded());
-app.use(express.methodOverride());
-app.use(app.router);
+app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'build')));
 
 // development only
 if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+  app.use(errorhandler());
 }
 
 // Generate metalsmith content
