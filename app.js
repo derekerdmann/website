@@ -20,7 +20,8 @@ var app = express();
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.use(logger('dev'));
-app.use(express.static(path.join(__dirname, 'build')));
+console.log("__dirname: " + __dirname );
+app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
 if ('development' == app.get('env')) {
@@ -29,6 +30,7 @@ if ('development' == app.get('env')) {
 
 // Generate metalsmith content
 var ms = Metalsmith(__dirname);
+ms.destination( "public" );
 ms.use( ignore( ".*" ) );  // ignore temp files
 ms.use( sass({ outputStyle: "expanded" }) )
 

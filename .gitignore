@@ -30,3 +30,4 @@ node_modules
 
 # Metalsmith output directory
 build/
+public/
