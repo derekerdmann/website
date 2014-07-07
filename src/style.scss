@@ -10,24 +10,16 @@ body {
     max-width: 960px;
     width: 100%;
 
+    text-align: center;
+
     font-family: "Arial";
     line-height: 1.5em;
 }
 
 main {
-    width: 66%;
-    float: left;
 
-    // Tablet/small window
-    @media screen and ( max-width: $tablet-min-size )    {
-        width: 100%;
-        float: none;
-    }
-}
-
-aside {
-    width: 33%;
-    float: right;
+    margin: 0 auto;
+    max-width: 400px;
 
     // Tablet/small window
     @media screen and ( max-width: $tablet-min-size )    {
@@ -37,6 +29,7 @@ aside {
 }
 
 header {
+    text-align: center;
     margin-top: 2em;
 }
 
@@ -60,10 +53,9 @@ p {
 // Links
 .external_links {
 
-    padding-left: 1em;
 
     li {
-        margin-bottom: 1.5em;
+        margin-bottom: 1em; 
     }
 
     a {
