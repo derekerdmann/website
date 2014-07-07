@@ -28,19 +28,6 @@ if ('development' == app.get('env')) {
   app.use(errorhandler());
 }
 
-// Generate metalsmith content
-var ms = Metalsmith(__dirname);
-ms.destination( "public" );
-ms.use( ignore( ".*" ) );  // ignore temp files
-ms.use( sass({ outputStyle: "expanded" }) )
-
-// Allow automatic rebuilds
-if (process.argv.indexOf( "--watch" ) > -1 ) {
-    ms.use(watch)
-}
-
-ms.build(function(err){ if (err) throw err; });
-
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
