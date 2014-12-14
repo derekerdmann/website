@@ -10,11 +10,6 @@ var fs = require("fs");
 var logger = require("morgan");
 var errorhandler = require("errorhandler");
 
-var Metalsmith = require("metalsmith");
-var sass = require("metalsmith-sass");
-var ignore = require("metalsmith-ignore");
-var watch = require('metalsmith-watch');
-
 var app = express();
 
 // all environments
