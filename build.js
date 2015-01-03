@@ -28,18 +28,26 @@ ms.use( markdown() );
 ms.use( templates({
     engine: "handlebars",
     helpers: {
+
         // Enables using a single template for both the armor and blaster
         // pages, then specifying the collection of posts by using the page's
         // front matter
         "lookupCollection": function() {
             return this.collections[this.currentCollection];
+        },
+
+        /// Formats a post time as a readable date
+        "formatDate": function(date) {
+            return date;
         }
     }
 }));
 
 // Allow automatic rebuilds
 if (process.argv.indexOf( "--watch" ) > -1 ) {
-    ms.use(watch)
+    ms.use(watch({
+        pattern: "**/*"
+    }))
 }
 
 ms.build(function(err){ if (err) throw err; });

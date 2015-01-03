@@ -1,12 +1,7 @@
 ---
-date: 2014-12-13
-anchor: first-post
+date: 2014-12-14
+anchor: second-post
 ---
-
-<aside class="extra-info">
-    <img src="images/example.jpg" alt="Example" />
-    <span class="caption">An example image goes here</span>
-</aside>
 
 <aside class="extra-info">
     <img src="images/example.jpg" alt="Example" />
