@@ -6,6 +6,8 @@ var collections = require('metalsmith-collections');
 var markdown = require('metalsmith-markdown');
 var templates = require('metalsmith-templates');
 
+var moment = require('moment');
+
 // Generate metalsmith content
 var ms = Metalsmith(__dirname);
 ms.source( "src" );
@@ -38,7 +40,7 @@ ms.use( templates({
 
         /// Formats a post time as a readable date
         "formatDate": function(date) {
-            return date;
+            return moment(date).format("MMMM Do YYYY");
         }
     }
 }));

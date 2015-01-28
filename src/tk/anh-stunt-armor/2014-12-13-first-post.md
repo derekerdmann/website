@@ -1,6 +1,7 @@
 ---
 date: 2014-12-13
 anchor: first-post
+title: First Post Title
 ---
 
 <aside class="extra-info">

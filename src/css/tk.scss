@@ -2,7 +2,12 @@ $max_body: 960px;
 $col_width: 64px;
 $col_spacing: 16px;
 
+$med_breakpoint: 55em;
+$mobile_breakpoint: 22em;
+
 $col2_width: (2 * $col_width) + $col_spacing;
+
+$imperial_gray: #aaa;
 
 body {
     max-width: 960px;
@@ -11,8 +16,19 @@ body {
     color: #333;
 }
 
+h1, h2, h3 {
+    font-variant: small-caps;
+}
+
 .wrapper {
     position: relative;
+
+    @media (min-width: $med_breakpoint) {
+    }
+
+    @media (max-width: $med_breakpoint) {
+        margin: 1em;
+    }
 }
 
 nav {
@@ -20,17 +36,39 @@ nav {
     ul {
         margin: 0;
         padding: 0;
+        list-style: none;
 
         li {
             margin: 0;
             padding: 0;
+            display: inline-block;
+        }
+
+        a {
+            padding: 1em;
+            display: block;
+            color: #222;
+            text-decoration: none;
+            font-variant: small-caps;
+            font-weight: bold;
+
+            &:hover {
+                background: lighten( $imperial_gray, 20% );
+            }
         }
     }
+
 }
 
 main {
-    margin-left: $col2_width;
-    padding-left: $col_spacing * 2;
+
+    @media (min-width: $med_breakpoint) {
+        margin-left: $col2_width;
+        padding-left: $col_spacing * 2;
+    }
+
+    @media (max-width: $med_breakpoint) {
+    }
 
     p {
         //max-width: 84%;
@@ -41,21 +79,47 @@ main {
     }
 }
 
+article + article {
+    margin-top: 4em;
+}
+
 // <aside> elements that sit next to the main content, to give extra detail or
 // links on parts used, resources, etc.
 .extra-info {
-    float: right;
-    margin-left: $col_spacing;
-    width: $col2_width;
-    display: block;
-    clear: right;
+
+    @media (min-width: $mobile_breakpoint) {
+        float: right;
+        margin-left: $col_spacing;
+        width: $col2_width;
+        display: block;
+        clear: right;
+
+        img {
+            max-width: 100%;
+        }
+
+    }
+
+    @media (max-width: $mobile_breakpoint) {
+
+        display: block;
+        clear: both;
+        position: relative;
+
+        img {
+            max-width: 50%;
+        }
+
+        .caption {
+            margin-left: 0.5em;
+            position: absolute;
+            min-height: 100%;
+            height: auto !important;
+        }
+
+    }
 
     font-size: 0.8em;
-
-    img {
-        width: 100%;
-        max-width: 100%;
-    }
 
     & + & {
         margin-top: 1em;
@@ -67,133 +131,179 @@ main {
 
     $bar_width: $col2_width / 9;
     $bar_radius: $bar_width / 2;
-    $width: $bar_width * 11;
-
-    width: $width;
-    min-height: 100%;
-    height: auto !important;
-    position: absolute;
-    left: -$bar_width; top: 0;
-
-    $imperial_gray: #aaa;
     $background: white;
     $bar_color: $imperial_gray;
 
-    background-position:
-        $bar_radius 100%,
-        0 100%,
-        $bar_width ($bar_radius + $bar_width),
-        $bar_width ($bar_radius + $bar_width * 7),
-        ($bar_width * 3) ($bar_radius + $bar_width),
-        ($bar_width * 3) ($bar_radius + $bar_width * 9),
-        ($bar_width * 5) ($bar_radius + $bar_width),
-        ($bar_width * 5) ($bar_radius + $bar_width * 7),
-        ($bar_width * 7) ($bar_radius + $bar_width),
-        ($bar_width * 7) ($bar_radius + $bar_width * 9),
-        ($bar_width * 9) ($bar_radius + $bar_width),
-        ($bar_width * 9) ($bar_radius + $bar_width * 7),
-        $bar_radius $bar_radius
-        ;
-    background-image:
+    @media (max-width: $med_breakpoint) {
+        height: $bar_width;
+        width: 100%;
 
-        // terminating bottom piece
-        radial-gradient(
-            circle at 50% 50%,
-            $bar_color $bar_radius,   // shapes
-            transparent $bar_radius // background
-        ),
-        linear-gradient(
-            to right,
-            $background 0,
-            $background $width
-        ),
+        background-color: $imperial_gray;
+        background-position:
+            0 0,
+            $bar_width 0,
+            100% 0,
+            100% 0
+            ;
+        background-size:
+            $bar_width $bar_width,
+            $bar_width $bar_width,
+            $bar_width $bar_width,
+            $bar_width * 2 $bar_width
+            ;
+        background-image:
+            radial-gradient(
+                circle at $bar_radius $bar_radius,
+                $bar_color $bar_radius,   // shapes
+                $background $bar_radius // background
+            ),
+            radial-gradient(
+                circle at $bar_width $bar_radius,
+                $bar_color $bar_radius,   // shapes
+                $background $bar_radius // background
+            ),
+            radial-gradient(
+                circle at $bar_radius $bar_radius,
+                $bar_color $bar_radius,   // shapes
+                $background $bar_radius // background
+            ),
+            radial-gradient(
+                circle at 0 50%,
+                $bar_color $bar_radius,   // shapes
+                $background $bar_radius // background
+            )
+            ;
+        background-repeat: no-repeat;
+        background-origin: padding-box;
+        background-clip: border-box;
+    }
 
-        // Bars
+    @media (min-width: $med_breakpoint) {
 
-        linear-gradient(
-            to bottom,
-            $bar_color 0,
-            $bar_color ($bar_width * 4),
-            transparent ($bar_width * 4) + 1px
-        ),
-        linear-gradient(
-            to bottom,
-            $bar_color 0,
-            $bar_color ($bar_width * 6),
-            transparent ($bar_width * 6) + 1px
-        ),
-        linear-gradient(
-            to bottom,
-            $bar_color 0,
-            $bar_color ($bar_width * 6),
-            transparent ($bar_width * 6) + 1px
-        ),
-        linear-gradient(
-            to bottom,
-            $bar_color 0,
-            $bar_color ($bar_width * 4),
-            transparent ($bar_width * 4) + 1px
-        ),
-        linear-gradient(
-            to bottom,
-            $bar_color 0,
-            $bar_color ($bar_width * 4),
-            transparent ($bar_width * 4) + 1px
-        ),
-        linear-gradient(
-            to bottom,
-            $bar_color 0,
-            $bar_color ($bar_width * 6),
-            transparent ($bar_width * 6) + 1px
-        ),
-        linear-gradient(
-            to bottom,
-            $bar_color 0,
-            $bar_color ($bar_width * 6),
-            transparent ($bar_width * 6) + 1px
-        ),
-        linear-gradient(
-            to bottom,
-            $bar_color 0,
-            $bar_color ($bar_width * 4),
-            transparent ($bar_width * 4) + 1px
-        ),
-        linear-gradient(
-            to bottom,
-            $bar_color 0,
-            $bar_color ($bar_width * 4),
-            transparent ($bar_width * 4) + 1px
-        ),
-        linear-gradient(
-            to bottom,
-            $bar_color 0,
-            $bar_color ($bar_width * 6),
-            transparent ($bar_width * 6) + 1px
-        ),
-        radial-gradient(
-            circle at 50% 50%,
-            $bar_color $bar_radius,   // shapes
-            $background $bar_radius // background
-        )
-        ;
-    background-attachment: scroll;
-    background-repeat: repeat-x, repeat-x, repeat-y, repeat-y, repeat-y, repeat-y, repeat-y, repeat-y, repeat-y, repeat-y, repeat-y, repeat-y, repeat;
-    background-size:
-        ($bar_width * 2) ($bar_width * 3),
-        ($width) ($bar_width + $bar_radius),
-        ($bar_width) ($bar_width * 14),
-        ($bar_width) ($bar_width * 14),
-        ($bar_width) ($bar_width * 14),
-        ($bar_width) ($bar_width * 14),
-        ($bar_width) ($bar_width * 14),
-        ($bar_width) ($bar_width * 14),
-        ($bar_width) ($bar_width * 14),
-        ($bar_width) ($bar_width * 14),
-        ($bar_width) ($bar_width * 14),
-        ($bar_width) ($bar_width * 14),
-        ($bar_width * 2) ($bar_width * 2)
-        ;
-    background-origin: padding-box;
-    background-clip: border-box;
-    background-color: $background;
+        $width: $bar_width * 11;
+
+        width: $width;
+        min-height: 100%;
+        height: auto !important;
+        position: absolute;
+        left: -$bar_width; top: 0;
+
+        background-position:
+            $bar_radius 100%,
+            0 100%,
+            $bar_width ($bar_radius + $bar_width),
+            $bar_width ($bar_radius + $bar_width * 7),
+            ($bar_width * 3) ($bar_radius + $bar_width),
+            ($bar_width * 3) ($bar_radius + $bar_width * 9),
+            ($bar_width * 5) ($bar_radius + $bar_width),
+            ($bar_width * 5) ($bar_radius + $bar_width * 7),
+            ($bar_width * 7) ($bar_radius + $bar_width),
+            ($bar_width * 7) ($bar_radius + $bar_width * 9),
+            ($bar_width * 9) ($bar_radius + $bar_width),
+            ($bar_width * 9) ($bar_radius + $bar_width * 7),
+            $bar_radius $bar_radius
+            ;
+        background-image:
+
+            // terminating bottom piece
+            radial-gradient(
+                circle at 50% 50%,
+                $bar_color $bar_radius,   // shapes
+                transparent $bar_radius // background
+            ),
+            linear-gradient(
+                to right,
+                $background 0,
+                $background $width
+            ),
+
+            // Bars
+            linear-gradient(
+                to bottom,
+                $bar_color 0,
+                $bar_color ($bar_width * 4),
+                transparent ($bar_width * 4) + 1px
+            ),
+            linear-gradient(
+                to bottom,
+                $bar_color 0,
+                $bar_color ($bar_width * 6),
+                transparent ($bar_width * 6) + 1px
+            ),
+            linear-gradient(
+                to bottom,
+                $bar_color 0,
+                $bar_color ($bar_width * 6),
+                transparent ($bar_width * 6) + 1px
+            ),
+            linear-gradient(
+                to bottom,
+                $bar_color 0,
+                $bar_color ($bar_width * 4),
+                transparent ($bar_width * 4) + 1px
+            ),
+            linear-gradient(
+                to bottom,
+                $bar_color 0,
+                $bar_color ($bar_width * 4),
+                transparent ($bar_width * 4) + 1px
+            ),
+            linear-gradient(
+                to bottom,
+                $bar_color 0,
+                $bar_color ($bar_width * 6),
+                transparent ($bar_width * 6) + 1px
+            ),
+            linear-gradient(
+                to bottom,
+                $bar_color 0,
+                $bar_color ($bar_width * 6),
+                transparent ($bar_width * 6) + 1px
+            ),
+            linear-gradient(
+                to bottom,
+                $bar_color 0,
+                $bar_color ($bar_width * 4),
+                transparent ($bar_width * 4) + 1px
+            ),
+            linear-gradient(
+                to bottom,
+                $bar_color 0,
+                $bar_color ($bar_width * 4),
+                transparent ($bar_width * 4) + 1px
+            ),
+            linear-gradient(
+                to bottom,
+                $bar_color 0,
+                $bar_color ($bar_width * 6),
+                transparent ($bar_width * 6) + 1px
+            ),
+            radial-gradient(
+                circle at 50% 50%,
+                $bar_color $bar_radius,   // shapes
+                $background $bar_radius // background
+            )
+            ;
+        background-attachment: scroll;
+        background-repeat: repeat-x, repeat-x, repeat-y, repeat-y, repeat-y, repeat-y, repeat-y, repeat-y, repeat-y, repeat-y, repeat-y, repeat-y, repeat;
+        background-size:
+            ($bar_width * 2) ($bar_width * 3),
+            ($width) ($bar_width + $bar_radius),
+            ($bar_width) ($bar_width * 14),
+            ($bar_width) ($bar_width * 14),
+            ($bar_width) ($bar_width * 14),
+            ($bar_width) ($bar_width * 14),
+            ($bar_width) ($bar_width * 14),
+            ($bar_width) ($bar_width * 14),
+            ($bar_width) ($bar_width * 14),
+            ($bar_width) ($bar_width * 14),
+            ($bar_width) ($bar_width * 14),
+            ($bar_width) ($bar_width * 14),
+            ($bar_width * 2) ($bar_width * 2)
+            ;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: $background;
+
+    }
 }

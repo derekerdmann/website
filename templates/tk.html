@@ -20,12 +20,12 @@
         appInsights.start("b230dddb-e933-4d0d-ba85-acd410bedeb3");
         appInsights.logPageView();
     </script>-->
+
+    <link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
-    <header>
-        AP Armor Build
-    </header>
+    <header>{{title}}</header>
 
     <nav>
         <ul>
@@ -43,7 +43,7 @@
 
             {{#each (lookupCollection)}}
                 <article class="update">
-                    <h2 id="{{this.anchor}}">
+                    <h1>{{this.title}}</h1>
                         <time datetime="{{this.date}}">{{formatDate this.date}}</time>
                     </h2>
                     {{{this.contents}}}
