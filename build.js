@@ -8,6 +8,7 @@ var templates = require('metalsmith-templates');
 
 var moment = require('moment');
 
+
 // Generate metalsmith content
 var ms = Metalsmith(__dirname);
 ms.source( "src" );
@@ -38,11 +39,13 @@ ms.use( templates({
             return this.collections[this.currentCollection];
         },
 
-        /// Formats a post time as a readable date
+        // Formats a post time as a readable date
         "formatDate": function(date) {
             return moment(date).format("MMMM Do YYYY");
-        }
-    }
+        },
+    },
+    // Sets production/dev environment
+    production: process.argv.indexOf( "--production" ) > -1
 }));
 
 // Allow automatic rebuilds
