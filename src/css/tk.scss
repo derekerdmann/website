@@ -70,12 +70,19 @@ main {
     @media (max-width: $med_breakpoint) {
     }
 
+    $content_max_width: ($col_width * 8) + ($col_spacing * 7);
+
     p {
-        //max-width: 84%;
+        max-width: $content_max_width;
     }
 
     ul {
-        //max-width: 84%;
+        max-width: $content_max_width;
+    }
+
+    img {
+        width: auto;
+        max-width: 100%;
     }
 }
 
@@ -86,6 +93,11 @@ article + article {
 // <aside> elements that sit next to the main content, to give extra detail or
 // links on parts used, resources, etc.
 .extra-info {
+
+    .caption {
+        display: inline-block;
+        padding-bottom: 0.25em;
+    }
 
     @media (min-width: $mobile_breakpoint) {
         float: right;
