@@ -1,8 +1,8 @@
 ---
 date: 2015-1-7
 anchor: getting-started
-title: Getting Started
 template: tk.html
+title: Getting Started
 ---
 
 What good is a Stormtrooper without his blaster?
@@ -87,8 +87,8 @@ ground out the parts of the stock that would have the dowel running through it:
 <aside class="extra-info">
     <img src="/images/tools/dremel-engraving-bit.jpg" alt="Dremel engraving bit" />
     <span class="caption">Most of my grinding was done with the Dremel
-    engraving bit. It's a small cutting head, but most kits should already have
-    one of these.</span>
+    engraving bit. The cutting head is a bit small, but they are in most
+    starter kits.</span>
 </aside>
 
 ![Stock piece with inside ground away][stockgrind1]
@@ -96,7 +96,7 @@ ground out the parts of the stock that would have the dowel running through it:
 [stockgrind1]: /images/blaster/stock-grind1.jpg
 [stockgrind2]: /images/blaster/stock-grind2.jpg
 
-I also realized that the drilling and grinding is really quite loud for a
-weeknight, so time to put the project away till the weekend.
+When I realized that the drilling and grinding is a little loud for a
+weeknight, I decided to put the project away till the weekend.
 
 

@@ -8,6 +8,33 @@ $mobile_breakpoint: 22em;
 $col2_width: (2 * $col_width) + $col_spacing;
 
 $imperial_gray: #aaa;
+$red_501st: #630001;
+
+header {
+    padding: 1em 0;
+    margin-bottom: 1em;
+    border-bottom: 3px solid lighten( $imperial_gray, 20% );
+}
+
+.title {
+    font-weight: bold;
+    display: block;
+
+    @media (min-width: $med_breakpoint) {
+        font-size: 3em;
+    }
+
+    @media (max-width: $med_breakpoint) {
+        font-size: 2em;
+        text-align: center;
+    }
+}
+
+.byline {
+    font-size: 1em;
+    display: block;
+    width: 100%;
+}
 
 body {
     max-width: 960px;
@@ -16,8 +43,22 @@ body {
     color: #333;
 }
 
-h1, h2, h3 {
+footer {
+    margin-top: 2em;
+    padding: 1em 0;
+    border-top: 3px solid lighten( $imperial_gray, 20% );
+    font-size: 0.8em;
+}
+
+h1 {
     font-variant: small-caps;
+    margin-bottom: 0;
+}
+
+h1 + time {
+    color: $imperial_gray;
+    font-variant: small-caps;
+    font-weight: bold;
 }
 
 .wrapper {
@@ -31,7 +72,13 @@ h1, h2, h3 {
     }
 }
 
-nav {
+.nav-global {
+
+    margin-bottom: $col_spacing * 2;
+
+    @media (max-width: $med_breakpoint) {
+        text-align: center;
+    }
 
     ul {
         margin: 0;
@@ -51,6 +98,7 @@ nav {
             text-decoration: none;
             font-variant: small-caps;
             font-weight: bold;
+            border-bottom: 3px solid lighten( $imperial_gray, 20% );
 
             &:hover {
                 background: lighten( $imperial_gray, 20% );
@@ -196,9 +244,9 @@ article + article {
 
         width: $width;
         min-height: 100%;
-        height: auto !important;
+        height: auto;
         position: absolute;
-        left: -$bar_width; top: 0;
+        left: -$bar_width; top: -$bar_width;
 
         background-position:
             $bar_radius 100%,
@@ -328,5 +376,13 @@ h1 a {
     &:hover {
         padding-bottom: 0;
         border-bottom: 1px solid;
+    }
+}
+
+a {
+    color: $red_501st;
+
+    &:hover {
+        text-decoration: none;
     }
 }

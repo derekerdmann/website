@@ -27,12 +27,15 @@
 </head>
 <body>
 
-    <header>{{title}}</header>
+    <header>
+        <span class="title">{{title}}</span>
+        <span class="byline">By Derek Erdmann</span>
+    </header>
 
-    <nav>
+    <nav class="nav-global">
         <ul>
-            <li><a href="/tk/anh-stunt-armor">ANH Stunt Armor</a></li>
             <li><a href="/tk/anh-e-11-blaster">ANH E-11 Blaster</a></li>
+            <li><a href="/tk/anh-stunt-armor">ANH Stunt Armor</a></li>
         </ul>
     </nav>
 
@@ -43,17 +46,36 @@
         <main class="build">
             {{{this.contents}}}
 
+            {{#if (multipleArticles)}}
+            <nav class="nav-article">
+                Jump to item:
+                <ul>
+                    {{#each (lookupCollection)}}
+                    <li><a href="#{{this.anchor}}">{{this.title}}</a></li>
+                    {{/each}}
+                </ul>
+            </nav>
+            {{/if}}
+
             {{#each (lookupCollection)}}
-                <article class="update">
-                    <h1><a href="#{{this.anchor}}">{{this.title}}</a></h1>
-                        <time datetime="{{this.date}}">{{formatDate this.date}}</time>
-                    </h2>
-                    {{{this.contents}}}
-                </article>
+            <article class="update">
+                <h1 id="{{this.anchor}}"><a href="#{{this.anchor}}">{{this.title}}</a></h1>
+                    <time datetime="{{this.date}}">{{formatDate this.date}}</time>
+                </h2>
+                {{{this.contents}}}
+            </article>
             {{/each}}
         </main>
 
     </div>
+
+    <footer>
+        Created in {{year}} by <a href="//derekerdmann.com">Derek Erdmann</a>.
+        This work is licensed under a
+        <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+            Creative Commons Attribution 4.0 International License</a>.
+
+    </footer>
 
 </body>
 </html>

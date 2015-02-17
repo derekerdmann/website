@@ -19,12 +19,20 @@ ms.use( collections({
     armor: {
         pattern: "tk/anh-stunt-armor/*.md",
         sortBy: 'date',
-        reverse: false
+        reverse: false,
+        metadata: {
+            tag: "ANH Stunt Armor",
+            template: "tk.html"
+        }
     },
     blaster: {
         pattern: "tk/anh-e-11-blaster/*.md",
         sortBy: 'date',
-        reverse: false
+        reverse: false,
+        metadata: {
+            tag: "ANH Stunt Armor",
+            template: "tk.html"
+        }
     }
 }));
 ms.use( markdown() );
@@ -39,9 +47,20 @@ ms.use( templates({
             return this.collections[this.currentCollection];
         },
 
+        // Returns true if there are multiple articles in the current collection
+        "multipleArticles": function() {
+            return this.collections[this.currentCollection]
+                && this.collections[this.currentCollection].length > 1;
+        },
+
         // Formats a post time as a readable date
         "formatDate": function(date) {
             return moment(date).format("MMMM Do YYYY");
+        },
+
+        // Generates the current year
+        "year": function(date) {
+            return moment(date).format("YYYY");
         },
     },
     // Sets production/dev environment
