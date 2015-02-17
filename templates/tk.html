@@ -45,7 +45,7 @@
 
             {{#each (lookupCollection)}}
                 <article class="update">
-                    <h1>{{this.title}}</h1>
+                    <h1><a href="#{{this.anchor}}">{{this.title}}</a></h1>
                         <time datetime="{{this.date}}">{{formatDate this.date}}</time>
                     </h2>
                     {{{this.contents}}}

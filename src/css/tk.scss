@@ -319,3 +319,14 @@ article + article {
 
     }
 }
+
+h1 a {
+    text-decoration: none;
+    color: inherit;
+    padding-bottom: 1px;
+    
+    &:hover {
+        padding-bottom: 0;
+        border-bottom: 1px solid;
+    }
+}
