@@ -104,7 +104,7 @@ IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
   IF !ERRORLEVEL! NEQ 0 goto error
 
 :: 4. Build site
-  call :ExecuteCmd !NPM_CMD! run-script build --production
+  call :ExecuteCmd !NPM_CMD! run-script build
   IF !ERRORLEVEL! NEQ 0 goto error
 
   popd
