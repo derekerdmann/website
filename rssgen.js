@@ -34,7 +34,7 @@ module.exports = function( options ) {
         articles.forEach( function(article) {
             debugger
             return feed.item( extend( {}, article,{
-                description: article.contents,
+                description: article.rawcontents,
                 url: feedOptions.site_url +
                     "/" + collections[article.collection].metadata.page +
                     "#" + article.anchor

@@ -6,6 +6,7 @@ var collections = require('metalsmith-collections');
 var markdown = require('metalsmith-markdown');
 var templates = require('metalsmith-templates');
 var rssgen = require("./rssgen");
+var rawcontents = require("./rawcontents");
 var moment = require('moment');
 
 
@@ -36,6 +37,7 @@ ms.use( collections({
     },
 }));
 ms.use( markdown() );
+ms.use( rawcontents() );
 ms.use( templates({
     engine: "handlebars",
     helpers: {
