@@ -5,7 +5,7 @@ var watch = require('metalsmith-watch');
 var collections = require('metalsmith-collections');
 var markdown = require('metalsmith-markdown');
 var templates = require('metalsmith-templates');
-
+var rssgen = require("./rssgen");
 var moment = require('moment');
 
 
@@ -21,8 +21,8 @@ ms.use( collections({
         sortBy: 'date',
         reverse: false,
         metadata: {
-            tag: "ANH Stunt Armor",
-            template: "tk.html"
+            template: "tk.html",
+            page: "anh-stunt-armor"
         }
     },
     blaster: {
@@ -30,10 +30,10 @@ ms.use( collections({
         sortBy: 'date',
         reverse: false,
         metadata: {
-            tag: "ANH Stunt Armor",
-            template: "tk.html"
+            template: "tk.html",
+            page: "anh-e11-blaster"
         }
-    }
+    },
 }));
 ms.use( markdown() );
 ms.use( templates({
@@ -66,6 +66,7 @@ ms.use( templates({
     // Sets production/dev environment
     production: process.argv.indexOf( "--production" ) > -1
 }));
+ms.use( rssgen() );
 
 // Allow automatic rebuilds
 if (process.argv.indexOf( "--watch" ) > -1 ) {
