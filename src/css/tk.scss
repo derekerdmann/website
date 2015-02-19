@@ -111,6 +111,7 @@ h1 + time {
 main {
 
     @media (min-width: $med_breakpoint) {
+        min-height: ($col2_width / 9) * 15;
         margin-left: $col2_width;
         padding-left: $col_spacing * 2;
     }
