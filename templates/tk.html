@@ -44,7 +44,7 @@
         <div class="imperial-decoration"></div>
 
         <main class="build">
-            {{{this.rawcontents}}}
+            {{{this.contents}}}
 
             {{#if (multipleArticles)}}
             <nav class="nav-article">
@@ -62,7 +62,7 @@
                 <h1 id="{{this.anchor}}"><a href="#{{this.anchor}}">{{this.title}}</a></h1>
                     <time datetime="{{this.date}}">{{formatDate this.date}}</time>
                 </h2>
-                {{{this.contents}}}
+                {{{this.rawcontents}}}
             </article>
             {{/each}}
         </main>
