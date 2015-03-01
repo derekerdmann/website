@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "server": "node server.js",
-    "build": "node build.js"
-    "watch": "node build.js --watch"
-    "buildprod": "node build.js --production"
+    "build": "node build.js",
+    "watch": "node build.js --watch",
+    "buildprod": "node build.js --production",
   },
   "dependencies": {
     "errorhandler": "^1.3.4",
