@@ -1,5 +1,5 @@
 ---
-date: 2015-1-25
+date: 2015-01-25
 anchor: more-resin-dust
 template: tk.html
 title: More Resin Dust

@@ -1,5 +1,5 @@
 ---
-date: 2015-1-7
+date: 2015-01-07
 anchor: getting-started
 template: tk.html
 title: Getting Started

@@ -1,5 +1,5 @@
 ---
-date: 2015-1-24
+date: 2015-01-24
 anchor: resin-dust-everywhere
 template: tk.html
 title: Resin Dust Everywhere
