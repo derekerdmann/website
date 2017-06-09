@@ -63,7 +63,6 @@ p {
         text-decoration: none;
         color: #333;
 
-        @extend [class^="icon-"];
         font-family: "FontAwesome", "Arial";
 
         &::before {
